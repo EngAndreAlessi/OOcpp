@@ -30,6 +30,14 @@ void FazLogin(Autenticavel& alguem, string senha)
 	}
 }
 
+ostream& operator<<(ostream& cout,const Conta& conta)
+{
+	Pessoa titular = conta.titular; 
+	cout << "O saldo da conta é (operador): " << conta.recuperaSaldo() << endl;
+	cout << "O titular da conta é " << titular.recuperaNome() << endl;
+	return cout;
+}
+
 int main()
 {
     Titular titular(Cpf("123.456.789-10"), "Vinicius", "umaSenha");
@@ -42,13 +50,15 @@ int main()
 
     Titular outro(Cpf("098.765.432-10"), "Vinicius Dias", "umaSenha");
     ContaCorrente umaOutraConta("654321", titular);
-	umaOutraConta+=300;
+	(Conta &) umaOutraConta += 300;
 	
-	umaOutraConta.transferePara(umaConta, 250);
+	ContaCorrente outraContaCorrente("54321", titular);
 	
-	ContaCorrente umaNovaConta = umaConta + umaOutraConta;
+	//umaOutraConta.transferePara(umaConta, 250);
+	outraContaCorrente += umaOutraConta;
+	
 
-    ExibeSaldo(umaOutraConta);
+    cout << umaOutraConta;
 
     cout << "Número de contas: " << Conta::recuperaNumeroDeContas() << endl;
 	
