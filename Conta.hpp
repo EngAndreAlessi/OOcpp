@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
-#include <variant>
 #include <utility>
+#include <variant>
 #include "Titular.hpp"
 
 class Conta
@@ -20,15 +20,18 @@ protected:
     float saldo;
 
 public:
-	enum ResultadoDeErroDoSaque{
-		ValorNegativo, SaldoInsuficiente
-	};
+    enum ResultadoSaque
+    {
+        ValorNegativo, SaldoInsuficiente
+    };
+
     Conta(std::string numero, Titular titular);
-    virtual ~Conta(); 
-    std::variant<ResultadoDeErroDoSaque, float> sacar(float valorASacar);
+    virtual ~Conta();
+    std::variant<ResultadoSaque, float> sacar(float valorASacar);
     void depositar(float valorADepositar);
-	void operator+=(float valorADepositar);
+    void operator+=(float valorADepositar);
     float recuperaSaldo() const;
     virtual float taxaDeSaque() const = 0;
-	friend std::ostream& operator<<(std::ostream& cout,const Conta& conta);
+    bool operator<(const Conta& outra);
+    friend std::ostream& operator<<(std::ostream& cout, const Conta& conta);
 };
