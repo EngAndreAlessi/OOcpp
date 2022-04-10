@@ -5,18 +5,17 @@
 ## Debug
 ProjectName            :=Banco
 ConfigurationName      :=Debug
-WorkspaceConfiguration :=Debug
-WorkspacePath          :=/home/andre/Documentos/Alura/Banco
-ProjectPath            :=/home/andre/Documentos/Alura/Banco/Banco
-IntermediateDirectory  :=../build-$(WorkspaceConfiguration)/Banco
-OutDir                 :=$(IntermediateDirectory)
+WorkspaceConfiguration := $(ConfigurationName)
+WorkspacePath          :=/mnt/Dados/Documentos/code/cursos/2047-c-plus-plus-oo-1/2047-c-plus-plus-oo-1
+ProjectPath            :=/mnt/Dados/Documentos/code/cursos/2047-c-plus-plus-oo-1/2047-c-plus-plus-oo-1/Banco
+IntermediateDirectory  :=../build-$(ConfigurationName)/Banco
+OutDir                 :=../build-$(ConfigurationName)/Banco
 CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
-User                   :=Andre Alessi
-Date                   :=10/04/22
-CodeLitePath           :=/home/andre/.codelite
-MakeDirCommand         :=mkdir -p
+User                   :=Vinicius Dias
+Date                   :=16/01/21
+CodeLitePath           :=/home/vinicius/.codelite
 LinkerName             :=/usr/bin/g++
 SharedObjectLinkerName :=/usr/bin/g++ -shared -fPIC
 ObjectSuffix           :=.o
@@ -29,8 +28,7 @@ OutputSwitch           :=-o
 LibraryPathSwitch      :=-L
 PreprocessorSwitch     :=-D
 SourceSwitch           :=-c 
-OutputDirectory        :=/home/andre/Documentos/Alura/Banco/build-$(WorkspaceConfiguration)/bin
-OutputFile             :=../build-$(WorkspaceConfiguration)/bin/$(ProjectName)
+OutputFile             :=../build-$(ConfigurationName)/bin/$(ProjectName)
 Preprocessors          :=
 ObjectSwitch           :=-o 
 ArchiveOutputSwitch    := 
@@ -47,11 +45,11 @@ LibPath                := $(LibraryPathSwitch).
 
 ##
 ## Common variables
-## AR, CXX, CC, AS, CXXFLAGS and CFLAGS can be overridden using an environment variable
+## AR, CXX, CC, AS, CXXFLAGS and CFLAGS can be overriden using an environment variables
 ##
 AR       := /usr/bin/ar rcu
 CXX      := /usr/bin/g++
-CC       := /usr/bin/gcc
+CC       := /usr/bin/gcc-9
 CXXFLAGS :=  -g -O0 -std=c++17 -Wall $(Preprocessors)
 CFLAGS   :=  -g -O0 -Wall $(Preprocessors)
 ASFLAGS  := 
@@ -62,8 +60,8 @@ AS       := /usr/bin/as
 ## User defined environment variables
 ##
 CodeLiteDir:=/usr/share/codelite
-Objects0=$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IntermediateDirectory)/Gerente.cpp$(ObjectSuffix) $(IntermediateDirectory)/Autenticavel.cpp$(ObjectSuffix) $(IntermediateDirectory)/Caixa.cpp$(ObjectSuffix) $(IntermediateDirectory)/Cpf.cpp$(ObjectSuffix) $(IntermediateDirectory)/ContaCorrente.cpp$(ObjectSuffix) $(IntermediateDirectory)/Titular.cpp$(ObjectSuffix) $(IntermediateDirectory)/ContaPoupanca.cpp$(ObjectSuffix) $(IntermediateDirectory)/Funcionario.cpp$(ObjectSuffix) $(IntermediateDirectory)/Pessoa.cpp$(ObjectSuffix) \
-	$(IntermediateDirectory)/Conta.cpp$(ObjectSuffix) 
+Objects0=../build-$(ConfigurationName)/Banco/main.cpp$(ObjectSuffix) ../build-$(ConfigurationName)/Banco/Titular.cpp$(ObjectSuffix) ../build-$(ConfigurationName)/Banco/Conta.cpp$(ObjectSuffix) ../build-$(ConfigurationName)/Banco/Funcionario.cpp$(ObjectSuffix) ../build-$(ConfigurationName)/Banco/Cpf.cpp$(ObjectSuffix) ../build-$(ConfigurationName)/Banco/ContaPoupanca.cpp$(ObjectSuffix) ../build-$(ConfigurationName)/Banco/Gerente.cpp$(ObjectSuffix) ../build-$(ConfigurationName)/Banco/ContaCorrente.cpp$(ObjectSuffix) ../build-$(ConfigurationName)/Banco/Caixa.cpp$(ObjectSuffix) ../build-$(ConfigurationName)/Banco/Autenticavel.cpp$(ObjectSuffix) \
+	
 
 
 
@@ -75,18 +73,18 @@ Objects=$(Objects0)
 .PHONY: all clean PreBuild PrePreBuild PostBuild MakeIntermediateDirs
 all: MakeIntermediateDirs $(OutputFile)
 
-$(OutputFile): $(IntermediateDirectory)/.d $(Objects) 
-	@$(MakeDirCommand) "$(IntermediateDirectory)"
+$(OutputFile): ../build-$(ConfigurationName)/Banco/.d $(Objects) 
+	@mkdir -p "../build-$(ConfigurationName)/Banco"
 	@echo "" > $(IntermediateDirectory)/.d
 	@echo $(Objects0)  > $(ObjectsFileList)
 	$(LinkerName) $(OutputSwitch)$(OutputFile) @$(ObjectsFileList) $(LibPath) $(Libs) $(LinkOptions)
 
 MakeIntermediateDirs:
-	@$(MakeDirCommand) "$(IntermediateDirectory)"
-	@$(MakeDirCommand) "$(OutputDirectory)"
+	@mkdir -p "../build-$(ConfigurationName)/Banco"
+	@mkdir -p ""../build-$(ConfigurationName)/bin""
 
-$(IntermediateDirectory)/.d:
-	@$(MakeDirCommand) "$(IntermediateDirectory)"
+../build-$(ConfigurationName)/Banco/.d:
+	@mkdir -p "../build-$(ConfigurationName)/Banco"
 
 PreBuild:
 
@@ -94,96 +92,88 @@ PreBuild:
 ##
 ## Objects
 ##
-$(IntermediateDirectory)/main.cpp$(ObjectSuffix): main.cpp $(IntermediateDirectory)/main.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/andre/Documentos/Alura/Banco/Banco/main.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/main.cpp$(DependSuffix): main.cpp
-	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/main.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/main.cpp$(DependSuffix) -MM main.cpp
+../build-$(ConfigurationName)/Banco/main.cpp$(ObjectSuffix): main.cpp ../build-$(ConfigurationName)/Banco/main.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/mnt/Dados/Documentos/code/cursos/2047-c-plus-plus-oo-1/2047-c-plus-plus-oo-1/Banco/main.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IncludePath)
+../build-$(ConfigurationName)/Banco/main.cpp$(DependSuffix): main.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT../build-$(ConfigurationName)/Banco/main.cpp$(ObjectSuffix) -MF../build-$(ConfigurationName)/Banco/main.cpp$(DependSuffix) -MM main.cpp
 
-$(IntermediateDirectory)/main.cpp$(PreprocessSuffix): main.cpp
-	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/main.cpp$(PreprocessSuffix) main.cpp
+../build-$(ConfigurationName)/Banco/main.cpp$(PreprocessSuffix): main.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) ../build-$(ConfigurationName)/Banco/main.cpp$(PreprocessSuffix) main.cpp
 
-$(IntermediateDirectory)/Gerente.cpp$(ObjectSuffix): Gerente.cpp $(IntermediateDirectory)/Gerente.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/andre/Documentos/Alura/Banco/Banco/Gerente.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Gerente.cpp$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/Gerente.cpp$(DependSuffix): Gerente.cpp
-	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/Gerente.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/Gerente.cpp$(DependSuffix) -MM Gerente.cpp
+../build-$(ConfigurationName)/Banco/Titular.cpp$(ObjectSuffix): Titular.cpp ../build-$(ConfigurationName)/Banco/Titular.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/mnt/Dados/Documentos/code/cursos/2047-c-plus-plus-oo-1/2047-c-plus-plus-oo-1/Banco/Titular.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Titular.cpp$(ObjectSuffix) $(IncludePath)
+../build-$(ConfigurationName)/Banco/Titular.cpp$(DependSuffix): Titular.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT../build-$(ConfigurationName)/Banco/Titular.cpp$(ObjectSuffix) -MF../build-$(ConfigurationName)/Banco/Titular.cpp$(DependSuffix) -MM Titular.cpp
 
-$(IntermediateDirectory)/Gerente.cpp$(PreprocessSuffix): Gerente.cpp
-	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Gerente.cpp$(PreprocessSuffix) Gerente.cpp
+../build-$(ConfigurationName)/Banco/Titular.cpp$(PreprocessSuffix): Titular.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) ../build-$(ConfigurationName)/Banco/Titular.cpp$(PreprocessSuffix) Titular.cpp
 
-$(IntermediateDirectory)/Autenticavel.cpp$(ObjectSuffix): Autenticavel.cpp $(IntermediateDirectory)/Autenticavel.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/andre/Documentos/Alura/Banco/Banco/Autenticavel.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Autenticavel.cpp$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/Autenticavel.cpp$(DependSuffix): Autenticavel.cpp
-	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/Autenticavel.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/Autenticavel.cpp$(DependSuffix) -MM Autenticavel.cpp
+../build-$(ConfigurationName)/Banco/Conta.cpp$(ObjectSuffix): Conta.cpp ../build-$(ConfigurationName)/Banco/Conta.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/mnt/Dados/Documentos/code/cursos/2047-c-plus-plus-oo-1/2047-c-plus-plus-oo-1/Banco/Conta.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Conta.cpp$(ObjectSuffix) $(IncludePath)
+../build-$(ConfigurationName)/Banco/Conta.cpp$(DependSuffix): Conta.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT../build-$(ConfigurationName)/Banco/Conta.cpp$(ObjectSuffix) -MF../build-$(ConfigurationName)/Banco/Conta.cpp$(DependSuffix) -MM Conta.cpp
 
-$(IntermediateDirectory)/Autenticavel.cpp$(PreprocessSuffix): Autenticavel.cpp
-	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Autenticavel.cpp$(PreprocessSuffix) Autenticavel.cpp
+../build-$(ConfigurationName)/Banco/Conta.cpp$(PreprocessSuffix): Conta.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) ../build-$(ConfigurationName)/Banco/Conta.cpp$(PreprocessSuffix) Conta.cpp
 
-$(IntermediateDirectory)/Caixa.cpp$(ObjectSuffix): Caixa.cpp $(IntermediateDirectory)/Caixa.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/andre/Documentos/Alura/Banco/Banco/Caixa.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Caixa.cpp$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/Caixa.cpp$(DependSuffix): Caixa.cpp
-	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/Caixa.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/Caixa.cpp$(DependSuffix) -MM Caixa.cpp
+../build-$(ConfigurationName)/Banco/Funcionario.cpp$(ObjectSuffix): Funcionario.cpp ../build-$(ConfigurationName)/Banco/Funcionario.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/mnt/Dados/Documentos/code/cursos/2047-c-plus-plus-oo-1/2047-c-plus-plus-oo-1/Banco/Funcionario.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Funcionario.cpp$(ObjectSuffix) $(IncludePath)
+../build-$(ConfigurationName)/Banco/Funcionario.cpp$(DependSuffix): Funcionario.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT../build-$(ConfigurationName)/Banco/Funcionario.cpp$(ObjectSuffix) -MF../build-$(ConfigurationName)/Banco/Funcionario.cpp$(DependSuffix) -MM Funcionario.cpp
 
-$(IntermediateDirectory)/Caixa.cpp$(PreprocessSuffix): Caixa.cpp
-	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Caixa.cpp$(PreprocessSuffix) Caixa.cpp
+../build-$(ConfigurationName)/Banco/Funcionario.cpp$(PreprocessSuffix): Funcionario.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) ../build-$(ConfigurationName)/Banco/Funcionario.cpp$(PreprocessSuffix) Funcionario.cpp
 
-$(IntermediateDirectory)/Cpf.cpp$(ObjectSuffix): Cpf.cpp $(IntermediateDirectory)/Cpf.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/andre/Documentos/Alura/Banco/Banco/Cpf.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Cpf.cpp$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/Cpf.cpp$(DependSuffix): Cpf.cpp
-	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/Cpf.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/Cpf.cpp$(DependSuffix) -MM Cpf.cpp
+../build-$(ConfigurationName)/Banco/Cpf.cpp$(ObjectSuffix): Cpf.cpp ../build-$(ConfigurationName)/Banco/Cpf.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/mnt/Dados/Documentos/code/cursos/2047-c-plus-plus-oo-1/2047-c-plus-plus-oo-1/Banco/Cpf.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Cpf.cpp$(ObjectSuffix) $(IncludePath)
+../build-$(ConfigurationName)/Banco/Cpf.cpp$(DependSuffix): Cpf.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT../build-$(ConfigurationName)/Banco/Cpf.cpp$(ObjectSuffix) -MF../build-$(ConfigurationName)/Banco/Cpf.cpp$(DependSuffix) -MM Cpf.cpp
 
-$(IntermediateDirectory)/Cpf.cpp$(PreprocessSuffix): Cpf.cpp
-	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Cpf.cpp$(PreprocessSuffix) Cpf.cpp
+../build-$(ConfigurationName)/Banco/Cpf.cpp$(PreprocessSuffix): Cpf.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) ../build-$(ConfigurationName)/Banco/Cpf.cpp$(PreprocessSuffix) Cpf.cpp
 
-$(IntermediateDirectory)/ContaCorrente.cpp$(ObjectSuffix): ContaCorrente.cpp $(IntermediateDirectory)/ContaCorrente.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/andre/Documentos/Alura/Banco/Banco/ContaCorrente.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/ContaCorrente.cpp$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/ContaCorrente.cpp$(DependSuffix): ContaCorrente.cpp
-	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/ContaCorrente.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/ContaCorrente.cpp$(DependSuffix) -MM ContaCorrente.cpp
+../build-$(ConfigurationName)/Banco/ContaPoupanca.cpp$(ObjectSuffix): ContaPoupanca.cpp ../build-$(ConfigurationName)/Banco/ContaPoupanca.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/mnt/Dados/Documentos/code/cursos/2047-c-plus-plus-oo-1/2047-c-plus-plus-oo-1/Banco/ContaPoupanca.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/ContaPoupanca.cpp$(ObjectSuffix) $(IncludePath)
+../build-$(ConfigurationName)/Banco/ContaPoupanca.cpp$(DependSuffix): ContaPoupanca.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT../build-$(ConfigurationName)/Banco/ContaPoupanca.cpp$(ObjectSuffix) -MF../build-$(ConfigurationName)/Banco/ContaPoupanca.cpp$(DependSuffix) -MM ContaPoupanca.cpp
 
-$(IntermediateDirectory)/ContaCorrente.cpp$(PreprocessSuffix): ContaCorrente.cpp
-	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/ContaCorrente.cpp$(PreprocessSuffix) ContaCorrente.cpp
+../build-$(ConfigurationName)/Banco/ContaPoupanca.cpp$(PreprocessSuffix): ContaPoupanca.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) ../build-$(ConfigurationName)/Banco/ContaPoupanca.cpp$(PreprocessSuffix) ContaPoupanca.cpp
 
-$(IntermediateDirectory)/Titular.cpp$(ObjectSuffix): Titular.cpp $(IntermediateDirectory)/Titular.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/andre/Documentos/Alura/Banco/Banco/Titular.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Titular.cpp$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/Titular.cpp$(DependSuffix): Titular.cpp
-	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/Titular.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/Titular.cpp$(DependSuffix) -MM Titular.cpp
+../build-$(ConfigurationName)/Banco/Gerente.cpp$(ObjectSuffix): Gerente.cpp ../build-$(ConfigurationName)/Banco/Gerente.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/mnt/Dados/Documentos/code/cursos/2047-c-plus-plus-oo-1/2047-c-plus-plus-oo-1/Banco/Gerente.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Gerente.cpp$(ObjectSuffix) $(IncludePath)
+../build-$(ConfigurationName)/Banco/Gerente.cpp$(DependSuffix): Gerente.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT../build-$(ConfigurationName)/Banco/Gerente.cpp$(ObjectSuffix) -MF../build-$(ConfigurationName)/Banco/Gerente.cpp$(DependSuffix) -MM Gerente.cpp
 
-$(IntermediateDirectory)/Titular.cpp$(PreprocessSuffix): Titular.cpp
-	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Titular.cpp$(PreprocessSuffix) Titular.cpp
+../build-$(ConfigurationName)/Banco/Gerente.cpp$(PreprocessSuffix): Gerente.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) ../build-$(ConfigurationName)/Banco/Gerente.cpp$(PreprocessSuffix) Gerente.cpp
 
-$(IntermediateDirectory)/ContaPoupanca.cpp$(ObjectSuffix): ContaPoupanca.cpp $(IntermediateDirectory)/ContaPoupanca.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/andre/Documentos/Alura/Banco/Banco/ContaPoupanca.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/ContaPoupanca.cpp$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/ContaPoupanca.cpp$(DependSuffix): ContaPoupanca.cpp
-	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/ContaPoupanca.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/ContaPoupanca.cpp$(DependSuffix) -MM ContaPoupanca.cpp
+../build-$(ConfigurationName)/Banco/ContaCorrente.cpp$(ObjectSuffix): ContaCorrente.cpp ../build-$(ConfigurationName)/Banco/ContaCorrente.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/mnt/Dados/Documentos/code/cursos/2047-c-plus-plus-oo-1/2047-c-plus-plus-oo-1/Banco/ContaCorrente.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/ContaCorrente.cpp$(ObjectSuffix) $(IncludePath)
+../build-$(ConfigurationName)/Banco/ContaCorrente.cpp$(DependSuffix): ContaCorrente.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT../build-$(ConfigurationName)/Banco/ContaCorrente.cpp$(ObjectSuffix) -MF../build-$(ConfigurationName)/Banco/ContaCorrente.cpp$(DependSuffix) -MM ContaCorrente.cpp
 
-$(IntermediateDirectory)/ContaPoupanca.cpp$(PreprocessSuffix): ContaPoupanca.cpp
-	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/ContaPoupanca.cpp$(PreprocessSuffix) ContaPoupanca.cpp
+../build-$(ConfigurationName)/Banco/ContaCorrente.cpp$(PreprocessSuffix): ContaCorrente.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) ../build-$(ConfigurationName)/Banco/ContaCorrente.cpp$(PreprocessSuffix) ContaCorrente.cpp
 
-$(IntermediateDirectory)/Funcionario.cpp$(ObjectSuffix): Funcionario.cpp $(IntermediateDirectory)/Funcionario.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/andre/Documentos/Alura/Banco/Banco/Funcionario.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Funcionario.cpp$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/Funcionario.cpp$(DependSuffix): Funcionario.cpp
-	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/Funcionario.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/Funcionario.cpp$(DependSuffix) -MM Funcionario.cpp
+../build-$(ConfigurationName)/Banco/Caixa.cpp$(ObjectSuffix): Caixa.cpp ../build-$(ConfigurationName)/Banco/Caixa.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/mnt/Dados/Documentos/code/cursos/2047-c-plus-plus-oo-1/2047-c-plus-plus-oo-1/Banco/Caixa.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Caixa.cpp$(ObjectSuffix) $(IncludePath)
+../build-$(ConfigurationName)/Banco/Caixa.cpp$(DependSuffix): Caixa.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT../build-$(ConfigurationName)/Banco/Caixa.cpp$(ObjectSuffix) -MF../build-$(ConfigurationName)/Banco/Caixa.cpp$(DependSuffix) -MM Caixa.cpp
 
-$(IntermediateDirectory)/Funcionario.cpp$(PreprocessSuffix): Funcionario.cpp
-	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Funcionario.cpp$(PreprocessSuffix) Funcionario.cpp
+../build-$(ConfigurationName)/Banco/Caixa.cpp$(PreprocessSuffix): Caixa.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) ../build-$(ConfigurationName)/Banco/Caixa.cpp$(PreprocessSuffix) Caixa.cpp
 
-$(IntermediateDirectory)/Pessoa.cpp$(ObjectSuffix): Pessoa.cpp $(IntermediateDirectory)/Pessoa.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/andre/Documentos/Alura/Banco/Banco/Pessoa.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Pessoa.cpp$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/Pessoa.cpp$(DependSuffix): Pessoa.cpp
-	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/Pessoa.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/Pessoa.cpp$(DependSuffix) -MM Pessoa.cpp
+../build-$(ConfigurationName)/Banco/Autenticavel.cpp$(ObjectSuffix): Autenticavel.cpp ../build-$(ConfigurationName)/Banco/Autenticavel.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/mnt/Dados/Documentos/code/cursos/2047-c-plus-plus-oo-1/2047-c-plus-plus-oo-1/Banco/Autenticavel.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Autenticavel.cpp$(ObjectSuffix) $(IncludePath)
+../build-$(ConfigurationName)/Banco/Autenticavel.cpp$(DependSuffix): Autenticavel.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT../build-$(ConfigurationName)/Banco/Autenticavel.cpp$(ObjectSuffix) -MF../build-$(ConfigurationName)/Banco/Autenticavel.cpp$(DependSuffix) -MM Autenticavel.cpp
 
-$(IntermediateDirectory)/Pessoa.cpp$(PreprocessSuffix): Pessoa.cpp
-	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Pessoa.cpp$(PreprocessSuffix) Pessoa.cpp
-
-$(IntermediateDirectory)/Conta.cpp$(ObjectSuffix): Conta.cpp $(IntermediateDirectory)/Conta.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/andre/Documentos/Alura/Banco/Banco/Conta.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Conta.cpp$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/Conta.cpp$(DependSuffix): Conta.cpp
-	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/Conta.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/Conta.cpp$(DependSuffix) -MM Conta.cpp
-
-$(IntermediateDirectory)/Conta.cpp$(PreprocessSuffix): Conta.cpp
-	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Conta.cpp$(PreprocessSuffix) Conta.cpp
+../build-$(ConfigurationName)/Banco/Autenticavel.cpp$(PreprocessSuffix): Autenticavel.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) ../build-$(ConfigurationName)/Banco/Autenticavel.cpp$(PreprocessSuffix) Autenticavel.cpp
 
 
--include $(IntermediateDirectory)/*$(DependSuffix)
+-include ../build-$(ConfigurationName)/Banco//*$(DependSuffix)
 ##
 ## Clean
 ##

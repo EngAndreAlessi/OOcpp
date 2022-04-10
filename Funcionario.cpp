@@ -13,5 +13,5 @@ std::string Funcionario::recuperaNome() const
 
 float Funcionario::recuperaSalario() const
 {
-	return salario;
+    return salario;
 }
