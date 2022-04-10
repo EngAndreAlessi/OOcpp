@@ -8,6 +8,7 @@
 #include "DiaDaSemana.hpp"
 #include "Funcionario.hpp"
 #include "Gerente.hpp"
+#include <utility>
 
 using namespace std;
 
@@ -18,7 +19,11 @@ void ExibeSaldo(const Conta& conta)
 
 void RealizaSaque(Conta& conta)
 {
-    conta.sacar(200);
+	variant<Conta::ResultadoDeErroDoSaque, float> resultado = conta.sacar(200);
+	if(auto saldo = std::get_if<float>(&resultado)) {
+		cout << "Novo saldo da conta: " << *saldo << endl;
+	}
+	
 }
 
 void FazLogin(Autenticavel& alguem, string senha)
@@ -63,6 +68,7 @@ int main()
     cout << "Número de contas: " << Conta::recuperaNumeroDeContas() << endl;
 	
 	Gerente umGerente(Cpf("000.000.000-00"), "Nome do gerente", 1500, DiaDaSemana::Terca, "123456");
+	
 	
     return 0;
 }
